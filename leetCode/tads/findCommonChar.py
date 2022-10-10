@@ -11,3 +11,5 @@ def findCommonChar(words):
                 repeat.remove(w)
         repeat = nRepeat
     return repeat
+
+print(findCommonChar(inputVar))
