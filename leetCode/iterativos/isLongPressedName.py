@@ -1,4 +1,4 @@
-name = "alex"
+name = "alaex"
 typed = "aleeex"
 
 def isLongPressedName(name, typed):
