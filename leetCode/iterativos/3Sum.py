@@ -4,22 +4,30 @@ inputVar = [82597,-9243,62390,83030,-97960,-26521,-61011,83390,-38677,12333,7598
 
 def threeSum(nums):
     nums.sort()
-
     result = []
-    for i in range(len(nums)-2):
-        if nums[i] != nums[i-1]:
-            asc = i+1
-            desc = len(nums)-1
-            while(asc<desc):
-                sum = nums[i] + nums[asc] + nums[desc]
-                if sum<0:
-                    asc+=1
-                elif sum >0:
-                    desc-=1
+    setNums = {}
+    for i in nums:
+        if i in setNums:
+            setNums[i] += 1
+        else:
+            setNums[i] = 1
+    
+    for i in range(len(nums)):
+        if nums[i]*-1<nums[0] or (nums[i]+nums[-2])*-1>nums[-1]:
+            break
+        for j in nums[i+1:]:
+            c = (nums[i]+j)*-1
+            if c<nums[0] or c>nums[-1]:
+                break
+            r = sorted([nums[i], j, c])
+            if c in setNums and r not in result:
+                if j == nums[i] and j == c:
+                    if setNums[c] > 2:
+                        result.append(r)         
+                elif j == c or nums[i] == c:
+                    if setNums[c] > 1:
+                        result.append(r)         
                 else:
-                    result.append([nums[i],nums[asc],nums[desc]])
-                    asc+=1
-                    desc-=1
-
+                    result.append(r)            
     return result
 print(threeSum(inputVar))
