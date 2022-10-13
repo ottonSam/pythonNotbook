@@ -16,15 +16,12 @@ def threeSum(nums):
     for i in range(len(nums)):
         if nums[i]*-1<nums[0] or (nums[i]+nums[-2])*-1>nums[-1]:
             break
+        k = "oi"
         for j in nums[i+1:]:
+            if j == k:
+                pass
+            
             c = (nums[i]+j)*-1
-            if c in twoSum:
-                if j in twoSum[c]:
-                    pass
-                else:
-                    twoSum[c].append([j, nums[i]])
-            else:
-                twoSum[c] = [[j, nums[i]]]
             
             if c<nums[0] or c>nums[-1]:
                 break
@@ -37,6 +34,7 @@ def threeSum(nums):
                     if setNums[c] > 1:
                         result.append(r)         
                 else:
-                    result.append(r)            
+                    result.append(r)        
+            k = j
     return result
 print(threeSum(inputVar))
