@@ -5,7 +5,7 @@ inputVar = [82597,-9243,62390,83030,-97960,-26521,-61011,83390,-38677,12333,7598
 def threeSum(nums):
     nums.sort()
     result = []
-    twoSum = {}
+    passedI = {}
     setNums = {}
     for i in nums:
         if i in setNums:
@@ -14,6 +14,10 @@ def threeSum(nums):
             setNums[i] = 1
     
     for i in range(len(nums)):
+        if nums[i] in passedI:
+            pass
+        else:
+            passedI[nums[i]] = nums[i]
         if nums[i]*-1<nums[0] or (nums[i]+nums[-2])*-1>nums[-1]:
             break
         k = "oi"
