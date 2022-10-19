@@ -12,7 +12,7 @@ def threeSum(nums):
         l = i+1
         r = len(nums) -1
 
-        if r - l >= 2:
+        if r - l >= 1:
             while r > l:
                 if nums[r] + nums[l] == expected:
                     sumResult = str(sorted([nums[i], nums[r], nums[l]]))
